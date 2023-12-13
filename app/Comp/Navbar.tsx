@@ -3,6 +3,7 @@ import Container from "./Container";
 import { Logo } from "./Logo";
 import Search from "./Search";
 import UserMenu from "./UserMenu";
+import Categories from "./Categories";
 
 function Navbar() {
   return (
@@ -20,10 +21,11 @@ function Navbar() {
           >
             <Logo />
             <Search />
-            <UserMenu />
+            <UserMenu currentUser={false} />
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 }
