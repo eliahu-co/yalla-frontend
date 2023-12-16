@@ -167,7 +167,8 @@ const Modal: React.FC<ModalProps> = ({
               className="
             p-6
             relative
-            flex-auto"
+            flex-auto
+            overflow-y-hidden"
             >
               {body}
             </div>
@@ -187,6 +188,7 @@ const Modal: React.FC<ModalProps> = ({
                 {secondaryAction && secondaryLabel && (
                     <Button label={secondaryLabel}
                     disabled={disabled}
+                    outline={true}
                     onClick={handleSecondaryAction} />
                 )} 
                 

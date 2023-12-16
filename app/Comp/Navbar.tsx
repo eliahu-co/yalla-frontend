@@ -21,7 +21,7 @@ function Navbar() {
           >
             <Logo />
             <Search />
-            <UserMenu currentUser={false} />
+            <UserMenu currentUser={true} />
           </div>
         </Container>
       </div>
