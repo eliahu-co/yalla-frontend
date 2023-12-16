@@ -38,7 +38,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   const createEvent = useCallback(() => {
     if (!currentUser) {
-      LoginModal.onOpen();
+      return LoginModal.onOpen();
     }
     EventModal.onOpen();
   }, [currentUser, LoginModal]);
