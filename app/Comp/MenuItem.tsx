@@ -11,8 +11,13 @@ const MenuItem: React.FC<MenuItemProps> = ({
   return (
     <div onClick={onClick}
     className="
+    first:border-t-0
+    last:border-b-0
     px-4 py-3 transition
-    hover:bg-neutral-100 font-semibold">
+    border-t-[1px] border-b-[1px] border-white
+    hover:border-purple-600
+    hover:text-purple-900
+    font-semibold">
        {label}
         </div>
   )

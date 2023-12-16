@@ -57,7 +57,7 @@ const Input: React.FC<InputProps> = ({
       font-light
       bg-white
       border-2
-      rounded-md
+      
       outline-none
       transition
       border-neutral-300
@@ -114,7 +114,6 @@ if (type === "textarea") {
         font-light
         bg-white
         border-2
-        rounded-md
         outline-none
         transition
         disabled:opacity-70
@@ -165,7 +164,7 @@ if (type === "textarea") {
       font-light
       bg-white
       border-2
-      rounded-md
+      
       outline-none
       transition
       disabled:opacity-70

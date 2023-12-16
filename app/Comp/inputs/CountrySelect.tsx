@@ -48,7 +48,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({
             }}
             theme={(theme) => ({
                 ...theme,
-                borderRadius: 6,
+                borderRadius: 0,
                 colors: {
                   ...theme.colors,
                   primary: 'black',

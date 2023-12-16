@@ -27,17 +27,17 @@ const Button: React.FC<ButtonProps> = ({
         relative
         disabled:opacity-70
         disabled:cursor-not-allowed
-        rounded-lg
         hover:opacity-80
         transition
         w-full
-        ${outline ? "bg-white" : "bg-purple-900"}
-        ${outline ? "border-black" : "bg-purple-900"}
+        border-[2px]
+        ${outline ? "bg-white" : "bg-purple-500"}
+        ${outline ? "border-black" : "border-purple-900"}
         ${outline ? "text-black" : "text-white"}
         ${small ? "py-1" : "py-2"}
         ${small ? "text-sm" : "text-md"}
         ${small ? "font-light" : "font-semibold"}
-        ${small ? "border-[1px]" : "border-2"}
+        ${small ? "border-[1px]" : "border-[1px]"}
     `}
     >
       {Icon && (

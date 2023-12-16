@@ -18,7 +18,6 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
     <div
     onClick={() => onClick(label)}
     className={`
-    rounded-xl
     border-2
     p-4
     flex
@@ -27,7 +26,8 @@ const CategoryInput: React.FC<CategoryInputProps> = ({
     sm:h-28
     transition
     cursor-pointer
-    ${ selected ? 'border-purple-800' : 'border-neutral-200'}
+    ${ selected ? 'border-purple-800' : 'border-neutral-600'}
+    ${ selected ? 'text-purple-800' : 'text-neutral-600'}
     `}
     >
         <Icon size={20} />

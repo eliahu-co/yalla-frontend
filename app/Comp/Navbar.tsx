@@ -8,7 +8,11 @@ import Categories from "./Categories";
 function Navbar() {
   return (
     <div className="fixed w-full z-10 shadow-sm">
-      <div className="py-4 border-b-[1px]">
+      <div className="
+      py-4 
+      border-b-[2px]
+      border-black
+      ">
         <Container>
           <div
             className="

@@ -47,7 +47,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     <div className="relative">
       <div
         className="flex flex-row
-        items-center gap-3"
+        items-center gap-3 items-stretch"
       >
         <div
           onClick={createEvent}
@@ -56,10 +56,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             md:block
             text-sm
             font-semibold
+            border-black
             py-3
             px-4
-            rounded-full
-            hover:bg-neutral-100
+            hover:text-purple-900
+            hover:border-purple-600
             transition
             cursor-pointer"
         >
@@ -73,17 +74,18 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             md:py-1 
             md:px-2
             border-[1px]
-            border-neutral-200
+            border-black
             flex 
             flex-row
             items-center
             gap-3 
-            rounded-full 
             cursor-pointer
-            hover:shadow-md 
+            hover:shadow-purple
+            hover:text-purple-900
+            hover:border-purple-600
             transition"
         >
-          <AiOutlineMenu />
+          <AiOutlineMenu  className="hover:text-purple-600" />
           <div className="
           hidden 
           md:block
@@ -97,14 +99,16 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         <div
           ref={ref}
           className="
-                absolute rounded-xl
-                shadow-md
+                absolute
+                shadow-purple
                 w-[40px]
+                border-[1px]
+                border-black
                 md:w-3/4 
                 bg-white 
                 overflow-hidden
                 right-0 
-                top-12 
+                top-14
                 text-sm
                 min-w-[200px]  
               ">
@@ -118,7 +122,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="Events hosted by me" />
                 <MenuItem onClick={EventModal.onOpen} label="Create an event" />
-                <hr />
+                <hr className="border-t-1 "/>
                 <MenuItem onClick={() => {}} label="Logout" />
               </>
             ) : (

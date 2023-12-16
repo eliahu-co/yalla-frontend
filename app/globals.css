@@ -8,7 +8,7 @@ html, body, :root{
 }
 
 :root {
-  --secondary: #44337a;
+  --secondary: #B977F9;
 }
 
 /* Scrollbar styles */
@@ -17,22 +17,26 @@ html, body, :root{
 * {
   scrollbar-width: thin;
   scrollbar-color: none var(--secondary);
+  scroll-padding: 10px;
 }
 
 /* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
 }
 
-*::-webkit-scrollbar-track {
-  background: none;
+/* 4px scroll thumb. 10px margin from right margin */
+::-webkit-scrollbar-track {
+  box-shadow: inset 14px 14px 14px 14px transparent;
+  border: solid 4px transparent;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
-  border-radius: 20px;
-  border: 3px solid var(--primary);
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 14px 14px 14px 14px #B977F9;
+  border: solid 4px transparent;
+  border-radius: 14px;
 }
 
 :root {
