@@ -89,6 +89,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="
           hidden 
           md:block
+          rounded-full
           ">
             <Avatar />
           </div>

@@ -31,16 +31,9 @@ export default function RootLayout({
         <RegisterModal />
         <LoginModal />
         <Navbar />
-        <div className="container mx-auto mt-2 p-4">
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-60">
-          {volunteerOpportunities.map((opportunity, index) => (
-            <Link href={`/events/${index}`} key={index}>
-            <EventCard {...opportunity}/>
-            </Link>
-          ))}
+        <div className="pb-20 pt-28">
+          {children}
         </div>
-        </div>
-        {children}
       </body>
     </html>
   );

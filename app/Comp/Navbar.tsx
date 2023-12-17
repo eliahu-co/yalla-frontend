@@ -7,7 +7,7 @@ import Categories from "./Categories";
 
 function Navbar() {
   return (
-    <div className="fixed w-full z-10 shadow-sm">
+    <div className="fixed w-full z-10 shadow-sm bg-white">
       <div className="
       py-4 
       border-b-[2px]
@@ -25,7 +25,7 @@ function Navbar() {
           >
             <Logo />
             <Search />
-            <UserMenu currentUser={true} />
+            <UserMenu currentUser={false} />
           </div>
         </Container>
       </div>
