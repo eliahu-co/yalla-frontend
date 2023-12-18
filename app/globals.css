@@ -17,7 +17,6 @@ html, body, :root{
 }
 .rdrMonthAndYearPickers select {
   color:#4a1d6e !important;
-  border-radius: 0px !important;
 }
 
 .rdrDayToday .rdrDayNumber span:after {
