@@ -19,7 +19,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   selected,
 }) => {
   const router = useRouter();
-  const { category, dates, location, setCategory } = useSearchParams();
+  const { category, startDate, endDate, location, setCategory } = useSearchParams();
 
   const handleClick = useCallback(() => {
     const newCategory = category === label ? "" : label;
@@ -27,7 +27,8 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     const newParams = {
       ...(newCategory && { category: newCategory }),
-      ...(dates && { dates }),
+      ...(startDate && { startDate }),
+      ...(endDate && { endDate }),
       ...(location && { location }),
     };
 
@@ -41,7 +42,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     router.push(url);
     
-  }, [category, label, setCategory, dates, location, router]);
+  }, [category, label, setCategory, startDate, endDate, location, router]);
 
   return (
     <div

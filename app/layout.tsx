@@ -4,12 +4,13 @@ import "./globals.css";
 import Navbar from "./Comp/Navbar";
 import RegisterModal from "./Comp/Modals/RegisterModal";
 import LoginModal from "./Comp/Modals/LoginModal";
-import SearchModal from "./Comp/Modals/SearchModal";
+
 import { ToasterProvider } from "./providers/ToasterProvider";
 import EventModal from "./Comp/Modals/EventModal";
 import EventCard from "./Comp/EventCard";
 import { volunteerOpportunities } from "./data/volunteerOpportunities";
 import Link from "next/link";
+import SearchModal from "./Comp/Modals/SearchModal";
 
 
 const inter = Inter({ subsets: ["latin"] });
