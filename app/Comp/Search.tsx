@@ -1,12 +1,17 @@
 "use client";
 
 import { BiSearch } from "react-icons/bi";
+import useSearchModal from "../hooks/useSearchModal";
 
 const Search = () => {
+
+  const SearchModal = useSearchModal();
+
+
   return (
     <div
+    onClick={SearchModal.onOpen}
       className="
-    
     w-full
     md:w-auto
     shadow-sm
@@ -19,12 +24,12 @@ const Search = () => {
     >
     <div
     className="
-    
     border-t-[2px]
     border-b-[2px]
     border-l-[2px]
     group-hover:border-purple-600
     transition
+    w-full
     flex
     flex-row
     "
