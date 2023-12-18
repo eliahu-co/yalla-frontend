@@ -57,7 +57,7 @@ const Input: React.FC<InputProps> = ({
       font-light
       bg-white
       border-2
-      rounded-md
+      
       outline-none
       transition
       border-neutral-300
@@ -95,6 +95,56 @@ const Input: React.FC<InputProps> = ({
     );
   }
 
+if (type === "textarea") {
+  return (
+    <div
+      className="
+    w-full relative"
+    >
+    <textarea
+      id={id}
+      disabled={disabled}
+      {...register(id, { required })}
+      placeholder=""
+      className={`
+        w-full
+        peer
+        p-4
+        pt-6
+        font-light
+        bg-white
+        border-2
+        outline-none
+        transition
+        disabled:opacity-70
+        disabled:cursor-not-allowed
+        ${errors[id] ? "border-red-500" : "border-neutral-300"}
+        ${errors[id] ? "focus:border-rose-600" : "focus:border-black"}
+        h-36 max-h-36 whitespace-pre-wrap
+      `}
+      />
+      <label
+        className={`
+      absolute
+      text-md
+      duration-150
+      transform
+      -translate-y-3
+      top-5
+      left-4
+      z-10
+      origin-[0]
+      peer-placeholder-shown:scale-100
+      peer-placeholder-shown:transform-t-0
+      peer-focus:scale-75
+      peer-focus:translate-y-[-1rem]
+      ${errors[id] ? "text-rose-600" : "text-gray-400"}
+      `}
+      >
+        {label}
+      </label>
+      </div>)
+    }
   return (
     <div
       className="
@@ -114,7 +164,7 @@ const Input: React.FC<InputProps> = ({
       font-light
       bg-white
       border-2
-      rounded-md
+      
       outline-none
       transition
       disabled:opacity-70

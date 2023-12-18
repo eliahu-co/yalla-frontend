@@ -2,19 +2,26 @@ import { create } from 'zustand';
 
 interface SearchParamsStore {
   category: string | null;
-  dates: string | null;
-  location: string | null;
+  startDate: string | null;
+  endDate: string | null;
+  location: any;
   setCategory: (category: string | null) => void;
-  setDates: (dates: string | null) => void;
-  setLocation: (location: string | null) => void;
+  setStartDate: (dates: string | null) => void;
+  setEndDate: (dates: string | null) => void;
+  setLocation: (location: any) => void;
 }
+
+
+  
 
 const useSearchParams = create<SearchParamsStore>((set) => ({
   category: null,
-  dates: null,
+  startDate: null,
+  endDate: null,
   location: null,
   setCategory: (category) => set({ category }),
-  setDates: (dates) => set({ dates }),
+  setStartDate: (startDate) => set({ startDate }),
+  setEndDate: (endDate) => set({ endDate }),
   setLocation: (location) => set({ location }),
 }));
 

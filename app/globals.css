@@ -7,8 +7,25 @@ html, body, :root{
   background-color: white;
 }
 
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  font-size: 16px !important;
+  width: 100% !important;
+}
+.rdrMonthAndYearPickers select {
+  color:#4a1d6e !important;
+}
+
+.rdrDayToday .rdrDayNumber span:after {
+  color:#4a1d6e !important;
+  background-color: #4a1d6e !important;
+}
+
 :root {
-  --secondary: #44337a;
+  --secondary: #B977F9;
 }
 
 /* Scrollbar styles */
@@ -17,22 +34,26 @@ html, body, :root{
 * {
   scrollbar-width: thin;
   scrollbar-color: none var(--secondary);
+  scroll-padding: 10px;
 }
 
 /* Chrome, Edge, and Safari */
-*::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
 }
 
-*::-webkit-scrollbar-track {
-  background: none;
+/* 4px scroll thumb. 10px margin from right margin */
+::-webkit-scrollbar-track {
+  box-shadow: inset 14px 14px 14px 14px transparent;
+  border: solid 4px transparent;
 }
 
-*::-webkit-scrollbar-thumb {
-  background-color: var(--secondary);
-  border-radius: 20px;
-  border: 3px solid var(--primary);
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 14px 14px 14px 14px #B977F9;
+  border: solid 4px transparent;
+  border-radius: 14px;
 }
 
 :root {
@@ -101,4 +122,11 @@ input[type="checkbox"]:focus-visible {
   outline: 8px solid var(--checkbox-hover-color);
   transform: scale(1.05);
   outline-offset: -10px;
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
 }

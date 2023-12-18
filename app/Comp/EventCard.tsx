@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import "tailwindcss/tailwind.css";
 
 interface EventCardProps {
     imageUrl: string;
@@ -22,12 +23,14 @@ const EventCard: React.FC<EventCardProps> = ({
         shadow-md
         hover:shadow-lg
         transition
-        cursor-pointer"
+        cursor-pointer
+        h-full"
         >
             <div className="relative h-56 w-full">
                 <Image className="object-cover w-full h-full"
                 src={imageUrl}
-                alt={title}/>
+                alt={title}
+                layout="fill"/>
             </div>
             <div className="p-4">
                 <h2 className="text-xl font-semibold mb-2">{title}</h2>
