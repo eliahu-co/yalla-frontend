@@ -8,9 +8,7 @@ import { AuthProvider } from "./context/AuthContext"
 
 import { ToasterProvider } from "./providers/ToasterProvider";
 import EventModal from "./Comp/Modals/EventModal";
-import EventCard from "./Comp/EventCard";
-import { eventsList } from "./data/eventsList";
-import Link from "next/link";
+
 import SearchModal from "./Comp/Modals/SearchModal";
 import ClientOnly from "./Comp/ClientOnly";
 

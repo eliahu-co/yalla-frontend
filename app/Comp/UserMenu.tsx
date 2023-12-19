@@ -91,7 +91,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           md:block
           rounded-full
           ">
-            <Avatar />
+            <Avatar src={currentUser?.imageUrl} />
           </div>
         </div>
       </div>
