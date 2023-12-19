@@ -8,7 +8,7 @@ import EmptyState from "./EmptyState";
 import getListing from "./Comp/actions/getEvents";
 
 export default function Home() {
-  const isEmpty = true;
+  const isEmpty = false;
   // cont eventsList = await getListing();
   // const currentUser = await getCurrentUser();
 
@@ -38,9 +38,18 @@ export default function Home() {
               passHref
             >
               <EventCard 
-              // currentUser={currentUser}
               key={event.id}
-              data = {event} 
+              id={event.id}
+              category={event.category}
+              title={event.title}
+              location={event.location}
+              address={event.address}
+              imageUrl={event.imageUrl}
+              startDate={event.startDate}
+              endDate={event.endDate}
+              capacity={event.capacity}
+              description={event.description}
+              languages={event.languages}
               />
             </Link>
           ))}

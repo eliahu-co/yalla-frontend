@@ -51,7 +51,7 @@ const RegisterModal = () => {
       name: "",
       email: "",
       password: "",
-      image_url: "",
+      imageUrl: "",
       bio: "",
       location: null,
       skills: [],
@@ -86,7 +86,7 @@ const RegisterModal = () => {
 
   const selSkills = watch("skills");
   const location = watch("location");
-  const imageSrc = watch("image_url");
+  const imageSrc = watch("imageUrl");
 
   const Map = useMemo(
     () =>
@@ -253,7 +253,7 @@ const RegisterModal = () => {
         </div>
         <ImageUpload
          value={imageSrc}
-         onChange={(value) => setCustomValue('image_url', value)} />
+         onChange={(value) => setCustomValue('imageUrl', value)} />
       </div>
     );
   }
