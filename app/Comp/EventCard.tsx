@@ -100,19 +100,19 @@ const EventCard: React.FC<EventCardProps> = ({
         <div className = "flex flex-col gap-2 w-full p-2">
           <div
             className="
-            font-semibold text-lg group-hover:text-purple-400"
+            font-semibold text-lg group-hover:text-purple-400 line-clamp-1"
           >
             {truncateText(title, 20)}
           </div>
           <div
             className="
-            font-light text-neutral-500 group-hover:text-purple-400"
+            font-light text-neutral-500 group-hover:text-purple-400 line-clamp-1"
           >
             {truncateText(description, 100)}
           </div>
           <div
             className="
-         font-xs text-neutral-400 ml-2 group-hover:text-purple-400
+         font-xs text-neutral-400 ml-2 group-hover:text-purple-400 line-clamp-1
          ">
             {location}
           </div>
