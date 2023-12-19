@@ -32,11 +32,6 @@ export default function Home() {
         gap-8 
         mt-20">
           {eventsList.map((event, index) => (
-            <Link
-              href={`/events/${encodeURIComponent(event.title)}`}
-              key={index}
-              passHref
-            >
               <EventCard 
               key={event.id}
               id={event.id}
@@ -51,7 +46,6 @@ export default function Home() {
               description={event.description}
               languages={event.languages}
               />
-            </Link>
           ))}
         </div>
       </Container>

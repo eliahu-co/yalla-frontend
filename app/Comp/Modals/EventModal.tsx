@@ -54,7 +54,7 @@ const EventModal = () => {
       location: null,
       address: "",
       title: "",
-      image_url: "",
+      imageUrl: "",
       startDate:"",
       endDate:"",
       capacity: 1,

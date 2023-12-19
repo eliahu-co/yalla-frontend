@@ -36,13 +36,21 @@ export default async function getListing(
     .post(`${API_URL}/events/search`, {
         query: {
             ...query,
-            ...(category && { category })
+            ...(category && { category }),
             ...(startDate && { startDate }),
             ...(endDate && { endDate }),
             ...(location && { location }),
       },
     })
-    .then(() => {
+
+    
+    .then((response) => {
+        const events = response.data;
+        const safeEvents = events.map((event: any) => ({
+            ...event,
+            createdAt: event.createdAt.toISOString()
+        }));
+        return safeEvents;
       // RegisterModal.onClose();
       // toast.success("Account Created");
       // reset();
@@ -50,7 +58,7 @@ export default async function getListing(
       // RegisterModal.onClose();
     })
     .catch((error) => {
-      // console.log(error.message);
+      console.log(error.message);
       // toast.error("Invalid Details");
     })
     .finally(() => {
