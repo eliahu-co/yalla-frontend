@@ -7,7 +7,7 @@ import useSearchParams from "../hooks/useSearchParams";
 import queryString from "query-string";
 
 interface CategoryBoxProps {
-  icon: IconType;
+  icon: string;
   label: string;
   description?: string;
   selected?: boolean;

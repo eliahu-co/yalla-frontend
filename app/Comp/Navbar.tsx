@@ -5,7 +5,13 @@ import Search from "./Search";
 import UserMenu from "./UserMenu";
 import Categories from "./Categories";
 
-function Navbar() {
+interface NavbarProps {
+  currentUser?: User | null;
+}
+
+const Navbar: React.FC<NavbarProps> = ({
+  currentUser,
+}) => {
   return (
     <div className="fixed w-full z-10 shadow-sm bg-white">
       <div className="
@@ -25,7 +31,7 @@ function Navbar() {
           >
             <Logo />
             <Search />
-            <UserMenu currentUser={false} />
+            <UserMenu currentUser={currentUser} />
           </div>
         </Container>
       </div>

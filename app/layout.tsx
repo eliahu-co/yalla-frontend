@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./Comp/Navbar";
 import RegisterModal from "./Comp/Modals/RegisterModal";
 import LoginModal from "./Comp/Modals/LoginModal";
+import { AuthProvider } from "./context/AuthContext"
 
 import { ToasterProvider } from "./providers/ToasterProvider";
 import EventModal from "./Comp/Modals/EventModal";
@@ -26,6 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <AuthProvider>
     <html lang="en">
       <body className={inter.className}>
         <ClientOnly>
@@ -33,7 +35,7 @@ export default function RootLayout({
           <EventModal />
           <RegisterModal />
           <LoginModal />
-          <SearchModal />
+          <SearchModal /> 
           <Navbar />
         </ClientOnly>
         <div className="pb-20 pt-28">
@@ -41,5 +43,6 @@ export default function RootLayout({
         </div>
       </body>
     </html>
+    </AuthProvider>
   );
 }

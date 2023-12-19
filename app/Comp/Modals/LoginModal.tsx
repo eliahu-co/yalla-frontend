@@ -10,12 +10,14 @@ import Input from "../inputs/Input";
 import { toast } from "react-hot-toast";
 import { API_URL } from "@/app/config";
 import { useRouter } from "next/navigation";
+import { useAuth } from '@/app/context/AuthContext'
 
 const LoginModal = () => {
   const router = useRouter();
   const LoginModal = useLoginModal();
   const RegisterModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
+  const { login } = useAuth();
 
   const {
     register,
@@ -30,8 +32,7 @@ const LoginModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    axios
-      .post(`${API_URL}/user/login`, data)
+    login(data.email, data.password)
       .then(() => {
         LoginModal.onClose();
         toast.success("Logged In");

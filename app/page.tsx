@@ -6,12 +6,15 @@ import EventCard from "./Comp/EventCard";
 import ClientOnly from "./Comp/ClientOnly";
 import EmptyState from "./EmptyState";
 import getListing from "./Comp/actions/getEvents";
+import useCategories from "./hooks/useCategories";
+import { useEffect } from "react";
+import getAllCategories from "./Comp/actions/getEventById";
 
 export default function Home() {
   const isEmpty = false;
   // cont eventsList = await getListing();
   // const currentUser = await getCurrentUser();
-
+  
   if (isEmpty) {
    return (
   <ClientOnly>

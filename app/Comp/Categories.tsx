@@ -1,11 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import Container from "./Container";
 import { categoriesData } from "../data/categoriesData";
 import CategoryBox from "./CategoryBox";
 import { usePathname } from "next/navigation";
 import useSearchParams from "../hooks/useSearchParams";
+import useCategories from "../hooks/useCategories";
+import getAllCategories from "./actions/getEventById";
 
 const Categories = () => {
   const params = useSearchParams();
@@ -13,6 +15,20 @@ const Categories = () => {
   const pathName = usePathname();
 
   const isMainPage = pathName === "/";
+
+  const { categories, setCategories } = useCategories();
+
+  useEffect(() => {
+    if (categories && categories.length === 0) {
+      getAllCategories()
+        .then(data => {
+          setCategories(data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }, [categories, setCategories]);
 
   if (!isMainPage) {
     return null;
