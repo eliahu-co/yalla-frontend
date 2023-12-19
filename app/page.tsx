@@ -1,22 +1,51 @@
-import Image from 'next/image'
-import Container from './Comp/Container'
-import { volunteerOpportunities } from './data/volunteerOpportunities'
-import Link from 'next/link'
-import EventCard from './Comp/EventCard'
-
+import Image from "next/image";
+import Container from "./Comp/Container";
+import { eventsList } from "./data/eventsList";
+import Link from "next/link";
+import EventCard from "./Comp/EventCard";
+import ClientOnly from "./Comp/ClientOnly";
+import EmptyState from "./EmptyState";
+import getListing from "./Comp/actions/getEvents";
 
 export default function Home() {
+  const isEmpty = true;
+  // cont eventsList = await getListing();
+  // const currentUser = await getCurrentUser();
+
+  if (isEmpty) {
+   return (
+  <ClientOnly>
+    <EmptyState showReset />
+  </ClientOnly>
+  )}
+  
   return (
-   <Container>
-    <div className="container mx-auto mt-2 p-4">
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-20">
-          {volunteerOpportunities.map((opportunity, index) => (
-            <Link href={`/events/${encodeURIComponent(opportunity.title)}`} key={index} passHref>
-            <EventCard {...opportunity}/>
+    <ClientOnly>
+      <Container>
+        <div className="
+        pt-14
+        grid 
+        grid-cols-1 
+        sm: grid-cols-2
+        md:grid-cols-3 
+        lg:grid-cols-4
+        gap-8 
+        mt-20">
+          {eventsList.map((event, index) => (
+            <Link
+              href={`/events/${encodeURIComponent(event.title)}`}
+              key={index}
+              passHref
+            >
+              <EventCard 
+              // currentUser={currentUser}
+              key={event.id}
+              data = {event} 
+              />
             </Link>
           ))}
         </div>
-        </div>
-   </Container>
-  )
+      </Container>
+    </ClientOnly>
+  );
 }

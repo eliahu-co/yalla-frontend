@@ -1,5 +1,5 @@
 import React, { useState} from "react";
-import { volunteerOpportunities } from "./data/volunteerOpportunities";
+import { volunteerOpportunities } from "./data/eventsList";
 import EventCard from "./Comp/EventCard";
 import { useRouter } from "next/router";
 import Calendar from "./Comp/inputs/Calendar";

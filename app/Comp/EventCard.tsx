@@ -7,6 +7,12 @@ interface EventCardProps {
     title: string;
     description: string;
     location: string;
+    address: string;
+    startDate: string;
+    endDate: string;
+    capacity: number;
+    languages: string[];
+    category: string;
 }
 
 const EventCard: React.FC<EventCardProps> = ({
@@ -14,6 +20,12 @@ const EventCard: React.FC<EventCardProps> = ({
     title,
     description,
     location,
+    address,
+    startDate,
+    endDate,
+    capacity,
+    languages,
+    category
 }) => {
     const truncateText = (text: string, maxLength: number) => {
         return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;

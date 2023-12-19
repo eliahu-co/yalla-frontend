@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import Modal from "./Modal";
@@ -11,24 +11,33 @@ import CategoryInput from "../inputs/CategoryInput";
 import CountrySelect from "../inputs/CountrySelect";
 import dynamic from "next/dynamic";
 import Counter from "../inputs/Counter";
+import { Range } from 'react-date-range';
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
 import axios from "axios";
 import { API_URL } from "@/app/config";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import Calendar from "../inputs/Calendar";
+import { formatISO } from "date-fns";
 
 enum STEPS {
   CATEGORY = 0,
   LOCATION = 1,
-  INFO = 2,
-  IMAGES = 3,
+  DATE = 2,
+  INFO = 3,
+  IMAGES = 4,
 }
 
 const EventModal = () => {
   const EventModal = useEventModal();
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
+  const [dateRange, setDateRange] = useState<Range>({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: 'selection'
+  });
   const router = useRouter();
 
   const {
@@ -36,6 +45,7 @@ const EventModal = () => {
     handleSubmit,
     setValue,
     watch,
+    getValues,
     formState: { errors },
     reset,
   } = useForm<FieldValues>({
@@ -45,8 +55,8 @@ const EventModal = () => {
       address: "",
       title: "",
       image_url: "",
-      date: "",
-      time_of_day: "",
+      startDate:"",
+      endDate:"",
       capacity: 1,
       description: "",
       languages: "",
@@ -59,9 +69,18 @@ const EventModal = () => {
       return;
     }
 
+    let dataWithLocationLabel = { ...data };
+
+    if (data.location && data.location.label) {
+      dataWithLocationLabel = {
+        ...data,
+        location: data.location.label,
+      };
+    }
+
     setIsLoading(true);
     axios
-      .post(`${API_URL}/user/event`, data)
+      .post(`${API_URL}/user/event`, dataWithLocationLabel)
       .then(() => {
         toast.success("Listing created!");
         router.refresh();
@@ -82,6 +101,8 @@ const EventModal = () => {
   const location = watch("location");
   const capacity = watch("capacity");
   const imageSrc = watch("image_url");
+  const startDate = watch("startDate");
+  const endDate = watch("endDate");
 
   const Map = useMemo(
     () =>
@@ -97,6 +118,13 @@ const EventModal = () => {
     shouldDirty: true;
     shouldTouch: true;
   };
+
+  useEffect(() => {
+    if (dateRange.startDate && dateRange.endDate) {
+      setValue('startDate', formatISO(dateRange.startDate));
+      setValue('endDate', formatISO(dateRange.endDate));
+    }
+  }, [dateRange, setValue]);
 
   const onBack = () => {
     setStep((value) => value - 1);
@@ -178,6 +206,19 @@ const EventModal = () => {
         <Map center={location?.latlng} />
       </div>
     );
+  }
+
+  if (step === STEPS.DATE) {
+    bodyContent = (
+    <div className="flex flex-col gap-2">
+      <div className="text-2xl font-bold">When do you wanna volunteer?</div>
+      <div className="font-light text-neutral-500 mt-2 mb-6">
+        Find the volunteering opportunity that matches your availability!
+        <Calendar
+        value={dateRange}
+        onChange={(value) => setDateRange(value.selection)}/>
+      </div>
+      </div>)
   }
 
   if (step === STEPS.INFO) {

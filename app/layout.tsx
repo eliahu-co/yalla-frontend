@@ -8,10 +8,10 @@ import LoginModal from "./Comp/Modals/LoginModal";
 import { ToasterProvider } from "./providers/ToasterProvider";
 import EventModal from "./Comp/Modals/EventModal";
 import EventCard from "./Comp/EventCard";
-import { volunteerOpportunities } from "./data/volunteerOpportunities";
+import { eventsList } from "./data/eventsList";
 import Link from "next/link";
 import SearchModal from "./Comp/Modals/SearchModal";
-
+import ClientOnly from "./Comp/ClientOnly";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,12 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ToasterProvider />
-        <EventModal />
-        <RegisterModal />
-        <LoginModal />
-        <SearchModal />
-        <Navbar />
+        <ClientOnly>
+          <ToasterProvider />
+          <EventModal />
+          <RegisterModal />
+          <LoginModal />
+          <SearchModal />
+          <Navbar />
+        </ClientOnly>
         <div className="pb-20 pt-28">
           {children}
         </div>

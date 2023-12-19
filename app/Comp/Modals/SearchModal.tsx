@@ -69,8 +69,11 @@ const SearchModal = () => {
       setEndDate(formatEndDate);
     }
 
+    console.log("startDate", startDate)
+    console.log("endDate", endDate)
+
     const newParams = {
-      ...(location && { location }),
+      ...(location.label && { location: location.label }),
       ...(startDate && { startDate }),
       ...(endDate && { endDate }),
       ...(category && { category }),
