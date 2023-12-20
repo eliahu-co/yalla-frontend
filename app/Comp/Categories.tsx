@@ -23,6 +23,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
   const { categories, setCategories } = useCategories();
 
   const [visibleCategoryIndex, setVisibleCategoryIndex] = useState(0);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (categories && categories.length === 0) {
@@ -36,6 +37,18 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
     }
   }, [categories, setCategories]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   if (!isMainPage) {
     return null;
   }
@@ -48,11 +61,14 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
     setVisibleCategoryIndex(Math.min(visibleCategoryIndex + 1, categoriesData.length - 1));
   };
 
+  const numCategories = windowWidth <= 1078 ? 3 : 8;
+
   return (
     <Container>
       <div
         className="
-          pt-4
+          pt-2
+          pb-2
           flex
           flex-row
           items-center
@@ -66,7 +82,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
           <FaArrowLeft size={25} />
         </div>
 
-        {categoriesData.slice(visibleCategoryIndex, visibleCategoryIndex + 5).map((category) => {
+        {categoriesData.slice(visibleCategoryIndex, visibleCategoryIndex + numCategories).map((category) => {
           const Icon = iconMapping[category.icon];
           return(
           <CategoryBox

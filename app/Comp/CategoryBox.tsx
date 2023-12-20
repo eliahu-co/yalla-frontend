@@ -67,7 +67,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     >
       {Icon && (
         <div className="relative">
-          <div className={`rounded-full bg-purple-200 p-1 ${selected ? 'border-2 border-purple-800' : ''}`}>
+          <div className={` border-2 border-white p-1 ${selected ? 'border-2 border-purple-800' : ''}`}>
             <Icon size={20} />
           </div>
         </div>
