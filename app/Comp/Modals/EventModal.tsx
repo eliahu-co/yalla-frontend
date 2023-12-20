@@ -20,6 +20,9 @@ import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import Calendar from "../inputs/Calendar";
 import { formatISO } from "date-fns";
+import { iconMapping } from "@/app/events/[eventId]/EventCategory";
+
+
 
 enum STEPS {
   CATEGORY = 0,
@@ -170,7 +173,10 @@ const EventModal = () => {
       max-h-[64vh]
       overflow-y-auto"
       >
-        {categoriesData.map((category) => (
+        {categoriesData.map((category) => {
+          const Icon = iconMapping[category.icon];
+
+          return(
           <div key={category.label} className="col-span-1">
             <CategoryInput
               onClick={(clickedCategory) => {
@@ -183,9 +189,12 @@ const EventModal = () => {
               selected={selCategory === category.label}
               label={category.label}
               icon={category.icon}
-            />
+            >
+            { Icon && <Icon size={20} />}
+            </CategoryInput>
           </div>
-        ))}
+        );
+            })}
       </div>
     </div>
   );
