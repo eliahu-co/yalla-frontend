@@ -5,34 +5,15 @@ import "tailwindcss/tailwind.css";
 import useCountries from "../hooks/useCountries";
 import { useMemo } from "react";
 import { format } from "date-fns";
+import { Event } from "../types/Event";
 
 interface EventCardProps {
-  id: string;
-  imageUrl: string;
-  title: string;
-  description: string;
-  location: string;
-  address: string;
-  startDate: string;
-  endDate: string;
-  capacity: number;
-  languages: string[];
-  category: string;
+  event: Event
 }
 
-const EventCard: React.FC<EventCardProps> = ({
-  id,
-  imageUrl,
-  title,
-  description,
-  location,
-  address,
-  startDate,
-  endDate,
-  capacity,
-  languages,
-  category,
-}) => {
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const { id, imageUrl, title, description, location, startDate, endDate } = event;
+
   const truncateText = (text: string, maxLength: number) => {
     return text.length > maxLength
       ? text.substring(0, maxLength) + "..."
@@ -49,6 +30,8 @@ const EventCard: React.FC<EventCardProps> = ({
 
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [startDate, endDate]);
+
+  // ...
 
   return (
     <div

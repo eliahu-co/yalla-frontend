@@ -8,60 +8,49 @@ export interface EventsParams {
     location?: string;
   }
 
-export default async function getListing(
-    params: EventsParams
-) {
+  export default async function getEvents(params: EventsParams) {
     const {
-        category,
-        startDate,
-        endDate,
-        location,
+      category,
+      startDate,
+      endDate,
+      location,
     } = params;
-
+  
     let query: any = {};
-
+  
     if (category) {
-        query.category = category;
+      query.category = category;
     }
-
+  
     if (startDate) {
-        query.startDate = startDate;
+      query.startDate = startDate;
     }
-
+  
     if (endDate) {
-        query.endDate = endDate;
+      query.endDate = endDate;
     }
-
-  axios
-    .post(`${API_URL}/events/search`, {
-        query: {
-            ...query,
-            ...(category && { category }),
-            ...(startDate && { startDate }),
-            ...(endDate && { endDate }),
-            ...(location && { location }),
-      },
-    })
-
-    
-    .then((response) => {
-        const events = response.data;
-        const safeEvents = events.map((event: any) => ({
-            ...event,
-            createdAt: event.createdAt.toISOString()
-        }));
-        return safeEvents;
-      // RegisterModal.onClose();
-      // toast.success("Account Created");
-      // reset();
-      // setStep(STEPS.IDENTITY);
-      // RegisterModal.onClose();
-    })
-    .catch((error) => {
-      console.log(error.message);
-      // toast.error("Invalid Details");
-    })
-    .finally(() => {
-      // setIsLoading(false);
-    });
-}
+  
+    if (location) {
+      query.location = location;
+    }
+  
+    try {
+      const response = await axios.get(`${API_URL}/api/events/search`, {
+        params: query,
+      });
+  
+      const events = response.data;
+      const safeEvents = events.map((event: any) => ({
+        ...event,
+        createdAt: event.createdAt.toISOString()
+      }));
+  
+      return safeEvents;
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log(error);
+      }
+    }
+  }
