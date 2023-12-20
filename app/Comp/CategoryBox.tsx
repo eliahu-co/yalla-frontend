@@ -60,11 +60,18 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       p-1
       transition
       cursor-pointer
+      relative
       ${selected ? "border-b-purple-800" : "border-transparent"}
       ${selected ? "text-purple-800" : "text-neutral-400"}
       `}
     >
-      {Icon && <Icon size={20} />}
+      {Icon && (
+        <div className="relative">
+          <div className={`rounded-full bg-purple-200 p-1 ${selected ? 'border-2 border-purple-800' : ''}`}>
+            <Icon size={20} />
+          </div>
+        </div>
+      )}
       <p className="text-xs font-light text-left pl-3">{label}</p>
     </div>
   );
