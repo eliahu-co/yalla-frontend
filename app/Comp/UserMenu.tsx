@@ -111,7 +111,8 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 right-0 
                 top-14
                 text-sm
-                min-w-[200px]  
+                min-w-[200px]
+                z-50  
               ">
           <div
             className="
