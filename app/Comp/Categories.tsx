@@ -8,8 +8,11 @@ import { usePathname } from "next/navigation";
 import useSearchParams from "../hooks/useSearchParams";
 import useCategories from "../hooks/useCategories";
 import getAllCategories from "./actions/getEventById";
+import { iconMapping } from "../events/[eventId]/EventCategory";
 
-const Categories = () => {
+
+//const Categories = () => {
+  const Categories: React.FC = () => {
   const params = useSearchParams();
   const selCategory = params.category;
   const pathName = usePathname();
@@ -46,17 +49,20 @@ const Categories = () => {
           overflow-x-auto
         "
       >
-        {categoriesData.map((category) => (
+        {categoriesData.map((category) => {
+          const Icon = iconMapping[category.icon];
+          return(
           <CategoryBox
             key={category.label}
             label={category.label}
             icon={category.icon}
             selected={selCategory === category.label}
           />
-        ))}
+         );
+        })};
       </div>
     </Container>
-  );
+    );
 };
 
 export default Categories;
