@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import { categoriesData } from "../data/categoriesData";
 import CategoryBox from "./CategoryBox";
@@ -9,6 +9,7 @@ import useSearchParams from "../hooks/useSearchParams";
 import useCategories from "../hooks/useCategories";
 import getAllCategories from "./actions/getEventById";
 import { iconMapping } from "../events/[eventId]/EventCategory";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 
 //const Categories = () => {
@@ -20,6 +21,8 @@ import { iconMapping } from "../events/[eventId]/EventCategory";
   const isMainPage = pathName === "/";
 
   const { categories, setCategories } = useCategories();
+
+  const [visibleCategoryIndex, setVisibleCategoryIndex] = useState(0);
 
   useEffect(() => {
     if (categories && categories.length === 0) {
@@ -37,6 +40,14 @@ import { iconMapping } from "../events/[eventId]/EventCategory";
     return null;
   }
 
+  const handleLeftArrowClick = () => {
+    setVisibleCategoryIndex(Math.max(visibleCategoryIndex - 1, 0));
+  };
+
+  const handleRightArrowClick = () => {
+    setVisibleCategoryIndex(Math.min(visibleCategoryIndex + 1, categoriesData.length - 1));
+  };
+
   return (
     <Container>
       <div
@@ -49,7 +60,11 @@ import { iconMapping } from "../events/[eventId]/EventCategory";
           overflow-x-auto
         "
       >
-        {categoriesData.map((category) => {
+        <div className="cursor-pointer" onClick={handleLeftArrowClick}>
+          <FaArrowLeft size={20} />
+        </div>
+
+        {categoriesData.slice(visibleCategoryIndex, visibleCategoryIndex + 5).map((category) => {
           const Icon = iconMapping[category.icon];
           return(
           <CategoryBox
@@ -58,8 +73,12 @@ import { iconMapping } from "../events/[eventId]/EventCategory";
             icon={category.icon}
             selected={selCategory === category.label}
           />
-         );
-        })};
+         )
+        })}
+
+        <div className="cursor-pointer" onClick={handleRightArrowClick}>
+          <FaArrowRight size={20}/>
+        </div>
       </div>
     </Container>
     );
