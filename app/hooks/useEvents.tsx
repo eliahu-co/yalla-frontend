@@ -1,10 +1,9 @@
 import { create } from 'zustand';
 import { Event } from '../types/Event';
 
-
 interface EventsStore {
   events: Event[];
-  setEvents: (events: Array<Event>) => void;
+  setEvents: (events: Event[]) => void;
 }
 
 const useEvents = create<EventsStore>((set) => ({

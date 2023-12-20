@@ -11,7 +11,7 @@ interface EventsContainerProps {
 }
 
 const EventsContainer: React.FC<EventsContainerProps> = ({ initialEvents }) => {
-  const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState<Event[]>(initialEvents || []);
 
   useEffect(() => {
     if (events.length === 0) {
@@ -26,11 +26,11 @@ const EventsContainer: React.FC<EventsContainerProps> = ({ initialEvents }) => {
   }, [events]);
 
   return (
-    <div className="pt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-20">
+    <div className=" ml-3 mr-2 pt-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-20">
       {events.length > 0 ? (
         events.map((event: Event) => <EventCard key={event.id} event={event} />)
       ) : (
-        <EmptyState />
+        <EmptyState showReset/>
       )}
     </div>
   );

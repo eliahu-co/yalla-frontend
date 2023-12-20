@@ -40,12 +40,8 @@ export interface EventsParams {
       });
   
       const events = response.data;
-      const safeEvents = events.map((event: any) => ({
-        ...event,
-        createdAt: event.createdAt.toISOString()
-      }));
   
-      return safeEvents;
+      return events;
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
