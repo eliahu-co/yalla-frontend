@@ -58,10 +58,12 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
           items-center
           justify-between
           overflow-x-auto
+          relative
         "
+        style={{position: 'relative'}}
       >
         <div className="cursor-pointer" onClick={handleLeftArrowClick}>
-          <FaArrowLeft size={20} />
+          <FaArrowLeft size={25} />
         </div>
 
         {categoriesData.slice(visibleCategoryIndex, visibleCategoryIndex + 5).map((category) => {
@@ -77,7 +79,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
         })}
 
         <div className="cursor-pointer" onClick={handleRightArrowClick}>
-          <FaArrowRight size={20}/>
+          <FaArrowRight size={25}/>
         </div>
       </div>
     </Container>
