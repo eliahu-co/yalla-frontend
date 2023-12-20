@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import useSearchParams from "../hooks/useSearchParams";
 import queryString from "query-string";
-
+import EventCategory, {iconMapping} from "../events/[eventId]/EventCategory";
 interface CategoryBoxProps {
   icon: string;
   label: string;
@@ -14,10 +14,11 @@ interface CategoryBoxProps {
 }
 
 const CategoryBox: React.FC<CategoryBoxProps> = ({
-  icon: Icon,
+  icon,
   label,
   selected,
 }) => {
+  const Icon = iconMapping[icon];
   const router = useRouter();
   const { category, startDate, endDate, location, setCategory } = useSearchParams();
 
@@ -42,7 +43,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     router.push(url);
     
-  }, [category, label, setCategory, startDate, endDate, location, router]);
+  }, [icon, label, setCategory, startDate, endDate, location, router]);
 
   return (
     <div
@@ -63,7 +64,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       ${selected ? "text-purple-800" : "text-neutral-400"}
       `}
     >
-      <Icon size={20} />
+      {Icon && <Icon size={20} />}
       <p className="text-xs font-light text-left pl-3">{label}</p>
     </div>
   );
