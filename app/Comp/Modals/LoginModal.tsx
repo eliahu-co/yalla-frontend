@@ -36,7 +36,7 @@ const LoginModal = () => {
   
     setIsLoading(true);
     axios
-      .post(`${API_URL}/user/login`, data)
+      .post(`${API_URL}/api/users/login`, data)
       .then((response) => {
         setUser(response.data);
         LoginModal.onClose();

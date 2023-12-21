@@ -64,10 +64,12 @@ const RegisterModal = () => {
       onNext();
       return;
     }
-
+    const { location, ...rest } = data;
+    const modifiedData = { ...rest, location: location.value };
+  
     setIsLoading(true);
     axios
-      .post(`${API_URL}/user/register`, data)
+      .post(`${API_URL}/api/users/register`, modifiedData)
       .then(() => {
         RegisterModal.onClose();
         toast.success("Account Created");
